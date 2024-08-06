@@ -14,17 +14,18 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Name cant be empty.")
     private String name;
 
     private String cpf;
 
     private Double income;
 
-    @PastOrPresent(message = "The date cant be a future one." )
+
     private LocalDate birthDate;
 
     private Integer children;
+
+    public Client() {}
 
     public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
         this.id = id;
