@@ -1,6 +1,7 @@
 package com.devsuperior.desafiocrudcliente.dto;
 
 import com.devsuperior.desafiocrudcliente.entities.Client;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PastOrPresent;
 
@@ -11,7 +12,7 @@ public class ClientDTO {
 
     private Long id;
 
-    @NotEmpty(message = "Name cant be empty.")
+    @NotBlank(message = "Name cant be empty.")
     private String name;
 
     private String cpf;

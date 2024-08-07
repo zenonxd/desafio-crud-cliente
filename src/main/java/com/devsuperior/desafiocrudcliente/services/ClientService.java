@@ -36,11 +36,7 @@ public class ClientService {
     public ClientDTO insert(ClientDTO dto) {
         Client entity = new Client();
 
-        entity.setName(dto.getName());
-        entity.setCpf(dto.getCpf());
-        entity.setBirthDate(dto.getBirthDate());
-        entity.setIncome(dto.getIncome());
-        entity.setChildren(dto.getChildren());
+        copyDtoToEntity(dto, entity);
 
         entity = clientRepository.save(entity);
 
@@ -60,8 +56,13 @@ public class ClientService {
     }
 
     @Transactional
-    public void delete(Long id) {
-        clientRepository.deleteById(id);
+    public boolean delete(Long id) {
+        if (clientRepository.existsById(id)) {
+            clientRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void copyDtoToEntity(ClientDTO dto, Client entity) {
